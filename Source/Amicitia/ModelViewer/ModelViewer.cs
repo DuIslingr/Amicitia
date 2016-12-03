@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using OpenTK.Graphics;
 using OpenTK;
-using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics.OpenGL;
 using AtlusLibSharp.Utilities;
 using AtlusLibSharp.Graphics.RenderWare;
 using AtlusLibSharp.PS2.Graphics;

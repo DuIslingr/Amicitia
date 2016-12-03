@@ -30,6 +30,10 @@ namespace Amicitia
         ListArchiveFile,
         PAKToolArchiveFile,
         AMDFile,
+        AWBFile,
+        AFSFile,
+        ACXFile,
+        EPLFile,
 
         // Texture formats
         RWTextureDictionary,

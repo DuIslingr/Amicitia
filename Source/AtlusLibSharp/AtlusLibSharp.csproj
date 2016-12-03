@@ -65,18 +65,34 @@
     <Reference Include="ManagedNvTriStrip">
       <HintPath>..\..\Dependencies\NativeManaged\ManagedNvTriStrip.dll</HintPath>
     </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\..\Dependencies\Nuget\OpenTK.1.1.2225.0\lib\net20\OpenTK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audio\ADXFile.cs" />
+    <Compile Include="Audio\CriwareHeader.cs" />
+    <Compile Include="FileSystems\ACX\ACXFile.cs" />
+    <Compile Include="FileSystems\AFS\AFSFile.cs" />
     <Compile Include="FileSystems\AMD\AMDChunk.cs" />
     <Compile Include="FileSystems\AMD\AMDFile.cs" />
+    <Compile Include="FileSystems\AWB\AWBFile.cs" />
+    <Compile Include="FileSystems\EPL\EPLFile.cs" />
+    <Compile Include="FileSystems\IArchiveEntry.cs" />
+    <Compile Include="Compression\ICompression.cs" />
+    <Compile Include="FileSystems\ISO\ISOFile.cs" />
     <Compile Include="FileSystems\ISO\Enums.cs" />
+    <Compile Include="FileSystems\ISO\PathTable.cs" />
+    <Compile Include="FileSystems\ISO\PrimaryDescriptor.cs" />
     <Compile Include="Graphics\RenderWare\RWMeshMaterialSplitData.cs" />
     <Compile Include="Graphics\TGA\TGAEncoding.cs" />
     <Compile Include="Graphics\TMX\TMXWrapMode.cs" />
@@ -85,6 +101,7 @@
     <Compile Include="FileSystems\PAKToolArchive\PAKToolArchiveFile.cs" />
     <Compile Include="FileSystems\ListArchive\ListArchiveFile.cs" />
     <Compile Include="FileSystems\ListArchive\ListArchiveFileEntry.cs" />
+    <Compile Include="FileSystems\IArchive.cs" />
     <Compile Include="IO\GenericBinaryFile.cs" />
     <Compile Include="Graphics\TGA\TGAFile.cs" />
     <Compile Include="Graphics\ITextureFile.cs" />
@@ -193,10 +210,13 @@
     <Compile Include="Scripting\TypeTableEntry.cs" />
     <Compile Include="Compression\PointerRelocationTableCompression.cs" />
     <Compile Include="Utilities\AlignmentHelper.cs" />
+    <Compile Include="Utilities\AudioHelper.cs" />
     <Compile Include="Utilities\BinaryIOExtension.cs" />
     <Compile Include="Utilities\BitHelper.cs" />
     <Compile Include="Utilities\BitmapHelper.cs" />
     <Compile Include="Utilities\DictionaryExtension.cs" />
+    <Compile Include="Utilities\BinaryEndiannessExtension.cs" />
+    <Compile Include="Utilities\BitStream.cs" />
     <Compile Include="Utilities\EnumExtension.cs" />
     <Compile Include="Utilities\ICollectionExtension.cs" />
     <Compile Include="Utilities\IListExtension.cs" />
@@ -209,6 +229,7 @@
     <Compile Include="PS2\Graphics\Interfaces\VIF\VIFCodeEvaluator.cs" />
     <Compile Include="PS2\Graphics\Interfaces\VIF\VIFTag.cs" />
     <Compile Include="PS2\Graphics\Interfaces\VIF\VIFUnpack.cs" />
+    <Compile Include="Utilities\NvTriStrip\NvTriStrip.cs" />
     <Compile Include="Utilities\Vector3Extension.cs" />
     <Compile Include="Utilities\StreamExtension.cs" />
     <Compile Include="Utilities\WuQuantizer\Box.cs" />
@@ -225,6 +246,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

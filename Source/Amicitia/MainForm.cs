@@ -8,7 +8,9 @@ using OpenTK;
 using System.Runtime.InteropServices;
 using Amicitia.ModelViewer;
 using AtlusLibSharp.Graphics.RenderWare;
+using AtlusLibSharp.Audio;
 using System.Drawing;
+using System.Reflection;
 
 namespace Amicitia
 {
@@ -374,15 +376,10 @@ namespace Amicitia
         {
             Form options = new Form();
             Label colorlab = new Label();
-            Label more = new Label();
             Button picker = new Button();
-            options.Text = "Options";
-            more.Text = "Stay tuned...";
-            more.Location = new Point(16, 80);
-            more.ForeColor = Color.Gray;
-            more.Font = new Font(more.Font, FontStyle.Italic);
+            options.Text = "Model Viewer BG Color";
             picker.Text = "...";
-            picker.Location = new System.Drawing.Point(140, 16);
+            picker.Location = new Point(140, 16);
             picker.Width /= 3;
             picker.Click += (object s, EventArgs ev) =>
             {
@@ -391,14 +388,28 @@ namespace Amicitia
                 d.ShowDialog(options);
                 viewer.BGColor = d.Color;
             };
-            colorlab.Text = "Model viewer bg color";
-            colorlab.Location = new System.Drawing.Point(16, 20);
+            colorlab.Text = "Select BG Color";
+            colorlab.Location = new Point(16, 20);
             colorlab.Width = 200;
             options.Size = new System.Drawing.Size(512, 256);
             options.Controls.Add(picker);
             options.Controls.Add(colorlab);
-            options.Controls.Add(more);
             options.ShowDialog(this);
+        }
+
+        private void OptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new OptionsForm(this).ShowDialog(this);
+        }
+
+        private void aDXToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            //ADXFile adx = new ADXFile(File.OpenRead(@"BOKO.ADX"));
+        }
+
+        private void audioViewerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AudioViewer.AudioPlayer(new System.Media.SoundPlayer()).Show();
         }
     }
 }

@@ -34,7 +34,12 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recentFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+           // this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aDXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.audioViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTreeView = new System.Windows.Forms.TreeView();
             this.mainPropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
@@ -48,7 +53,9 @@
             // 
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.optionsToolStripMenuItem2});
+            // this.testingToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(779, 24);
@@ -60,7 +67,8 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.recentFilesToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -68,23 +76,59 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // recentFilesToolStripMenuItem
+            // 
+            this.recentFilesToolStripMenuItem.Name = "recentFilesToolStripMenuItem";
+            this.recentFilesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.recentFilesToolStripMenuItem.Text = "Recent Files";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.optionsToolStripMenuItem.Text = "Options";
+            this.optionsToolStripMenuItem.Text = "RMD BG Color";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            // 
+            // optionsToolStripMenuItem2
+            //
+            this.optionsToolStripMenuItem2.Name = "optionsToolStripMenuItem2";
+            this.optionsToolStripMenuItem2.Size = new System.Drawing.Size(71, 20);
+            this.optionsToolStripMenuItem2.Text = "Options";
+            this.optionsToolStripMenuItem2.Click += new System.EventHandler(this.OptionsToolStripMenuItem_Click);
+            // 
+            // testingToolStripMenuItem
+            // 
+        /*    this.testingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aDXToolStripMenuItem,
+            this.audioViewerToolStripMenuItem});
+            this.testingToolStripMenuItem.Name = "testingToolStripMenuItem";
+            this.testingToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.testingToolStripMenuItem.Text = "Testing"; */
+            // 
+            // aDXToolStripMenuItem
+            // 
+            this.aDXToolStripMenuItem.Name = "aDXToolStripMenuItem";
+            this.aDXToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aDXToolStripMenuItem.Text = "ADX";
+            this.aDXToolStripMenuItem.Click += new System.EventHandler(this.aDXToolStripMenuItem_Click_1);
+            // 
+            // audioViewerToolStripMenuItem
+            // 
+            this.audioViewerToolStripMenuItem.Name = "audioViewerToolStripMenuItem";
+            this.audioViewerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.audioViewerToolStripMenuItem.Text = "AudioViewer";
+            this.audioViewerToolStripMenuItem.Click += new System.EventHandler(this.audioViewerToolStripMenuItem_Click);
             // 
             // mainTreeView
             // 
@@ -96,7 +140,8 @@
             this.mainTreeView.Name = "mainTreeView";
             this.mainTreeView.Size = new System.Drawing.Size(300, 551);
             this.mainTreeView.TabIndex = 1;
-            this.mainTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.mainTreeView_AfterSelect_1);
+            this.mainTreeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+            this.mainTreeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             // 
             // mainPropertyGrid
             // 
@@ -116,8 +161,8 @@
             this.mainPropertyGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mainPropertyGrid.Size = new System.Drawing.Size(448, 277);
             this.mainPropertyGrid.TabIndex = 2;
-            // 
-            // 
+            this.mainPropertyGrid.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+            this.mainPropertyGrid.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             // 
             // 
             // mainPictureBox
@@ -160,13 +205,14 @@
             this.Controls.Add(this.mainPropertyGrid);
             this.Controls.Add(this.mainTreeView);
             this.Controls.Add(this.mainMenuStrip);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
             this.MinimumSize = new System.Drawing.Size(662, 569);
             this.Name = "MainForm";
-            this.Text = "Amicitia 16/2/2016";
+            this.Text = "Amicitia 12/2/2016";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
@@ -187,6 +233,11 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private OpenTK.GLControl glControl1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem testingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aDXToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem audioViewerToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem recentFilesToolStripMenuItem;
     }
 }
 
